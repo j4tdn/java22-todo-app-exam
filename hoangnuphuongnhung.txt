@@ -50,5 +50,40 @@
 		 + kết quả  sau khi thực hiện rebase 2 branch lấy các commit của  branch được reabse sẽ so sánh  với commit chung gần nhất và lấy những commit khác đó sẽ được  replay lên branch kia  nên là số commit sẽ không thay đổi sau khi gộp nhánh 
 		 + vì cacsc commit đã được replay lại nên khi push lên repo thì các commit sẽ sắp  xếp ở đầu tiên và dễ dàng thấy 
 	
-	
+5. Phân biệt git fetch và git clone
+	-> git fetch: sử dụng  khi local repository đã liên kết với  remote repository 
+	-> git merge: sử dụng  khi local repository chưa liên kết với  remote repository nào 
+
+6. Phân biệt git fetch và git pull
+ 	-> git fetch: chỉ dùng để lấy các commit mới nhất t trên  repository về nhánh trung gian
+	-> git pull = git fetch + git merge 
+
+7. Phân biệt git pull và git pull --rebase
+	-> git pull = git fetch + git merge 
+	-> git pull --rebase = git fetch + git rebase 
+
+8. Git log dùng để làm gì
+	-> dùng để show ra lịch sử commit
+
+9. Git status dùng để làm gì
+ 	-> dùng để hiển  thị trạng thái của các file hiện  tại 
+
+10. Git add dùng để làm gì
+	-> dùng để chuyển file từ trạng thái  untracked/modified sang trạng thái staged
+11. Git commit dùng để làm gì
+ 	-> dùng để chuyển những file đang ở trạng thái staged sang trạng thái unmodified và 1 lần commit thì sẽ lưu lại lịch sử commit trong git
+12. Mô tả lệnh để tạo branch ở local
+	->Cách  1: git branch newbranch oldbranch	
+		newbranch: là tên nhánh  mới muốn tạo 
+		oldbranch: tên nhánh đang trỏ đến vị trí commit muốn tạo nhánh 
+	->Cách 2:  git branch newbranch ma_hard 
+		ma_hard đây là mã của commit mà tại vị trí commit đó muốn tạo branch
+13. Mô tả lệnh để xóa branch ở local
+	-> git branch -D nameBranch: xóa nhánh  khi mà không quan tâm nhánh đó có merge hay cần dùng  làm gì không 
+	-> git branch -d nameBranch: 
+14. Mô tả lệnh để xóa branch ở remote
+	->
+
+
+
 	
