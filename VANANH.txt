@@ -1,0 +1,66 @@
+1
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "Commit 1"
+touch c2.txt
+git add c2.txt
+git commit -m "Commit 2"
+touch c3.txt
+git add c3.txt
+git commit -m "Commit 3"
+git branch feature
+git checkout feature
+touch c4.txt
+git add c4.txt
+git commit -m "Commit 4"
+touch c5.txt
+git add c5.txt
+git commit -m "Commit 5"
+git checkout master
+git branch bug
+git checkout bug
+touch c6.txt
+git add c6.txt
+git commit -m "Commit 6"
+touch c7.txt
+git add c7.txt
+git commit -m "Commit 7"
+touch c8.txt
+git add c8.txt
+git commit -m "Commit 8"
+
+2.git checkout feature
+git merge bug
+3.git checkout bug
+git rebase feature
+4.Phân biệt git merge và git rebase:
++Git merge: Gộp các thay đổi từ một nhánh vào nhánh hiện tại. Khi sử dụng git merge, Git sẽ tạo một commit mới để duy trì lịch sử của việc gộp nhánh. Sử dụng  khi giữ nguyên lịch sử commit của 2 nhánh
++Git rebase: Gộp các thay đổi từ một nhánh vào nhánh hiện tại và đặt các commit của nhánh hiện tại lên trên commit cuối cùng của nhánh khác. Khi sử dụng git rebase, Git sẽ di chuyển các commit của nhánh hiện tại và áp dụng lên commit cuối cùng của nhánh khác. Sử dụng khi muốn giữ lịch sử commit và làm cho nó trở nên gọn gàng hơn.
+5.Phân biệt git fetch và git pull:
++Git fetch: Lấy về tất cả các thay đổi mới nhất từ remote repository, nhưng không thay đổi commit nào trong thư mục làm việc hiện tại
++Git pull: Lấy về các thay đổi mới nhất từ remote repository và tự động thực hiện git merge hoặc git rebase để cập nhật thư mục làm việc hiện tại với remote repository.
+6.Phân biệt git pull và git pull --rebase:
++Git pull: Lấy về các thay đổi mới nhất từ remote repository và tự động thực hiện git merge để cập nhật thư mục làm việc hiện tại với remote repository.
++Git pull : --rebase: Lấy về các thay đổi mới nhất từ remote repository và tự động thực hiện git rebase để cập nhật thư mục làm việc hiện tại với remote repository
+7.Git log dùng để xem lịch sử commit của repository, có các tùy chọn để hiển thị luchj sử commit theo định dạng.
+8.Git status giúp bạn biết được trạng thái của repository và xác định các hành động cần thực hiện tiếp theo, như thêm file, commit hoặc đẩy các thay đổi lên remote repository.
+9.Git add dùng để đánh dấu các file đã thay đổi để được theo dõi bởi Git. 
+10.Git commit dùng để tạo một commit mới trong repository,Git commit ghi lại trạng thái của repository tại thời điểm commit và làm tiến triển trong lịch sử của repository.
+11.Lệnh để tạo một branch ở local là:
++git branch <branch-name>
+12.Lệnh để xóa một branch ở local là:
++git branch -d <branch-name>
+13.Lệnh để xóa một branch ở remote là:
++git push origin --delete <branch-name>
+14.Nhánh trung gian (intermediate branch) là nhánh được tạo ra để làm cầu nối giữa hai nhánh khác. Nó thường được sử dụng trong quá trình gộp code hoặc thực hiện các thay đổi lớn trên dự án. 
+15.Nhánh trung gian (intermediate branch) là một nhánh được tạo ra để làm cầu nối hoặc điểm kết nối giữa hai nhánh khác trong quá trình phát triển phần mềm hoặc quản lý mã nguồn.
+16.Detach HEAD là trạng thái khi HEAD (con trỏ trỏ đến commit hiện tại) không trỏ đến một nhánh (branch) cụ thể. Thay vào đó, HEAD trực tiếp trỏ đến một commit cụ thể trong lịch sử commit.
+17.HEAD là một con trỏ đặc biệt trong Git, nó trỏ đến commit hiện tại trong lịch sử commit của repository. HEAD có thể trỏ đến một nhánh (branch) cụ thể hoặc một commit trực tiếp trong trạng thái detach. 
+19:Trong Git, có các trạng thái sau cho các file:
+-Untracked
+-Modified
+-Staged
+-Unmodified
+-Deleted
+

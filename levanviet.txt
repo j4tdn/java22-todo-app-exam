@@ -1,0 +1,128 @@
+1
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "c1.txt"
+touch c2.txt
+git add c2.txt
+git commit -m "c2.txt"
+touch c3.txt
+git add c3.txt
+git commit -m "c3.txt"
+git checkou -b bug master
+touch c6.txt
+git add c6.txt
+git commit -m "c6.txt"
+touch c7.txt
+git add c7.txt
+git commit -m "c7.txt"
+touch c8.txt
+git add c8.txt
+git commit -m "c8.txt"
+git branch feature master
+git checkout feature
+touch c4.txt
+git add c4.txt
+git commit -m "c4.txt"
+touch c5.txt
+git add c5.txt
+git commit -m "c5.txt"
+
+2 .Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+
+git checkout bug
+git merge feature
+
+3.Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+
+git checkout feature
+git rebase bug
+
+4.Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+
+giống : đều là gộp nhánh
+khác :  + git merge thêm các thay đổi từ nhánh này sang nhánh khác
+        + git rebase chuyển các thay đổi từ một nhánh sang 1 nhánh khác 
+
+5.Phân biệt git fetch và git clone
+giống : đều dùng để tải code từ git về máy để làm
+khác :  +git clone : lấy cả về máy
+        +git fetch : trọn lọc và có các nhánh trung gian
+cách dùng : +git clone:   dùng khi bắt đầu vào dự án 
+             +git fetch : dùng khi up code lên git 
+
+6.Phân biệt git fetch và git pull
+
+giống : Tải xuống các thay đổi từ một kho lưu trữ từ xa
+khác + git pull : tải xuống và gộp thành 1 nhánh
+
+
+8.Git log dùng để làm gì:
+
+dùng để show commit head đang trỏ đến và các commit cha của nó
+
+9.Git status dùng để làm gì
+
+xem trang thái của chức năng 
+
+10. Git add dùng để làm gì
+
+dùng để add trức năng sang trang thái staged
+
+11.Git commit dùng để làm gì
+
+chuyển chức năng từ tay sang UnModified
+
+12.Mô tả lệnh để tạo branch ở local
+
+cách tạo : + git branch [tên nhánh mới] [tên nhánh cũ]
+         cho phép một nhánh mới đc tạo nên từ nhánh cũ đã có
+
+           + git branch [tên nhánh muốn tạo ] [mã hash của commit]
+         mốn tạo 1 nhánh mới từ 1 commit đã có
+
+13 Mô tả lệnh để xóa branch ở local
+
+cách xóa : git branck -D tên [branch xóa]
+xóa branh muốn xóa
+
+14 Mô tả lệnh để xóa branch ở remote
+
+ cách xóa: git push origin --delete [tên nhánh muốn xóa]
+
+15 Nhánh trung gian là gì
+
+là nhánh kết nối  2 nhánh với nhau dùng để gộp 2 nhánh với nhau lại trong 1 dự án 
+
+16 .  Detach HEAD là gì
+ 
+là trang thái của head trong git 
+
+17.  Phân biệt HEAD và BRANCH
+Head là một tham chiếu trỏ đến nhánh . Và khi ta thay đổi chức năng thì nhánh đc head trỏ đến sẽ đi thao chức năng mới đó
+Branch : là một nhánh 
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+
+có 2 cách để xóa commit trong git:
++ c1: git reset HEAD[số commit]
++ c2 : git reset HEAD 
+
+19.  Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+ + Untracked: fide mới đc 
+ +UnModified: fide đc đc commit
+  + staged : fide đc add
+  +Modified : fide thay đổi khi đc commit
+
+20 .
+tạo folder đặt tên task 
+dùng git clone để tải code về máy
+tạo một nhánh theo task để làm
+thêm các chức năng và commit nó
+sau đó push lên kho lưu trữ
+ ví dụ :
+git clone [đường dẫn kho lưu trữ]
+git checkout -b tên nhanh mình tạo tên nhánh trung gian mà head trỏ đến
+làm các chức năng và commid nó [ touch..,add..,git commit -m".."
+git fetch và gộp nhánh (nếu kho lưu trức đã thay đổi)
+git push tên nhánh muốn gộp:tên nhánh cần gộp

@@ -1,0 +1,149 @@
+Câu 1 :
+B1-Tạo forder chứa dự án 
+B2-git init 
+B3-touch readme.txt
+B4-git add .
+B5 git commit -m "add readme" (c1)
+B6 touch c2.txt 
+B7 git add .
+B8 git commit -m "add c2" (c2)
+B9 touch c3.txt 
+B10 git add .
+B11 git commit -m "add c3" (c3)
+B12 git branch feature master 
+B13 git checkout feature 
+B14 touch c4.txt 
+B15 git add .
+B16 git commit -m "add c4" (c4)
+B17 touch c5.txt 
+B18 git add .
+B19 git commit -m "add c5" (c5)
+B20 git branch bug master 
+B21 git checkout bug
+B22 touch c6.txt 
+B23 git add .
+B24 git commit -m "add c6" (c6)
+B25 touch c7.txt 
+B26 git add .
+B27 git commit -m "add c7" (c7)
+B28 touch c8.txt 
+B29 git add .
+B30 git commit -m "add c8" (c8)
+
+Câu 2 : Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+	git checkout featue 
+	git merge bug
+
+Câu 3 :Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+
+	git checkout featue 
+	git rebase bug
+
+Câu 4 :Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+
+	Giống : 		đều gộp 2 nhánh lại với nhau 
+				đều tạo ra commit mới 
+	Khác  :			merge-giữ nguyên lịch sử commit của cả hai nhánh tạo một commit merge
+				rebase- tạo lại lịch sử commit không tạo commit merge
+
+	Khi nào nên sử dụng :	merge-thích hợp cho việc giữ nguyên lịch sử commit và theo dõi rõ ràng các nhánh
+				rebase-để giữ lịch sử commit sạch sẽ ít commit merge phù hợp với làm việc với các nhánh dài.
+
+Câu 5 :Phân biệt git fetch và git clone
+
+	fetch sử dụng để lấy tất cả các commit mới nhất từ remote 
+	clone sao chép một remote vào máy local
+
+Câu 6 :Phân biệt git fetch và git pull
+
+	git fetch: lấy tất cả các commit mới nhất từ remote 
+	git pull : lấy dữ liệu từ remote và thực hiện merge với nhánh hiện tại
+
+Câu 7 : Phân biệt git pull và git pull --rebase
+
+	git pull: Lấy dữ liệu từ remote và thực hiện merge vào nhánh hiện tại
+	git pull --rebase: Lấy dữ liệu từ remote và thực hiện rebase thay vì merge
+
+Câu 8 : Git log dùng để làm gì
+
+	git log dùng để hiển thị lịch sử commit 
+
+Câu 9 : Git status dùng để làm gì
+
+	git status dùng để hiển thị trạng thái của các commit
+
+Câu 10 : Git add dùng để làm gì
+	
+	git add dùng để lưu các thay đổi hoặc các file mới vào để chuẩn bị commit 
+
+Câu 11 : Git commit dùng để làm gì
+
+	git commit dùng để commit những file vừa được add 
+
+Câu 12 : Mô tả lệnh để tạo branch ở local
+
+	lệnh tạo branch : git branch "tên nhánh cần tạo" "từ nhánh cần tạo hoặc commit cần tạo "
+
+Câu 13 : Mô tả lệnh để xóa branch ở local
+
+	để xóa branch dùng lệnh git branch --d "tên nhánh cần xóa"
+
+Câu 14 : Mô tả lệnh để xóa branch ở remote
+
+	để xóa branch ở remote dùng lệnh git push origin --delete "tên nhánh cần xóa"
+
+Câu 15 : Nhánh trung gian là gì
+
+	nhánh trung gian là nhánh dùng để thực hiện các thao tác từ local lên remote và ngược lại
+
+Câu 16 : Detach HEAD là gì
+	
+	Detach HEAD giống như một con trỏ trỏ đến thư mục đang làm việc 
+
+Câu 17 : Phân biệt HEAD và BRANCH
+
+	HEAD là con trỏ trỏ đến thư mục làm việc có thể là nhánh hoặc commit
+	BRANCH là nhánh làm việc của dự án 
+
+Câu 18 : Có mấy cách để xóa commit, mô tả và cho ví dụ
+
+	có 3 cách để xóa 1 commit là git reset , git amend
+	ví dụ : git reset git reset --hard HEAD^
+		git amend git commit --amend
+
+Câu 19 : Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+	
+	các file git có 4 trạng thái 
+	Untracked: là các file chưa được git theo dõi 
+	Unmodified: là các file đã được commit
+	Modified: các file đã có dự thay đổi nhưng chưa được commit
+	Staged: các file đã được add vào để chuẩn bị commit 
+
+Câu 20 : Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+
+	B1 cần xác định task được nhận đang nằm ở nhánh nào trong dự án 
+	B2 tạo một thư mục làm việc trên máy 
+	B3 git clone để xao chép một remote vào local của mình 
+	B4 tiến hành làm việc 
+	B5 add và commit file vừa làm việc 
+	B6 push lên nhánh của dự án 
+	B7 nếu đang bị reject thì git fetch về để tiến hành fix 
+	B8 add và commit lại 
+	B9 push lên lại 
+	Hoàn thành task 
+	
+
+	ví dụ ở bài tập 1 nhận task 05 ở nhánh todo-app-1.0
+	tạo thư mục ở máy làm việc -> mở git base git clone https://github.com/j4tdn/java22-todo-app-exam
+	->git branch todo-app-1.0 origin/todo-app-1.0->git checkout todo-app-1.0->touch mul.txt->git add .->git commit 
+	->git push origin todo-app-1.0:todo-app-1.0 
+
+
+
+
+
+
+
+
+
+
