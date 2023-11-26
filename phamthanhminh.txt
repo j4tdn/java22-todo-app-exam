@@ -1,0 +1,67 @@
+1,Chương trình:
+Tạo file rỗng, truy cập file rỗng
+Bật git bash
+git int
+Tạo commit 1,2,3 với cú pháp: touch c1.txt > git add > git commit -m
+Tạo nhánh future từ commit 3: Git branch future [Mã hash cm3]
+Tạo commit 4,5
+Tạo nhánh bug từ commit 3: Git checkout master > Git branch bug [Mã hash cm3]
+Tạo commit 6,7,8
+
+2, Git checkout future
+   Git rebase bug
+
+3, Git checkout future
+   Git rebase bug
+
+4, Giống: Đều dùng để gộp nhánh, có kết quả giống nhau, tương tự khi gộp nhánh chung đường thẳng
+   Khác: Khi gộp nhánh rẽ hướng
+   Merge: Gộp nội dung từ các commit mới từ nhánh cha, chỉ cần fix 1 lần khi bị conflict, tạo commit mới( commit merge)
+   Rebase: Gộp lần lượt các commit, có thể nhiều conflicts, commit gộp thay đổi mã hash, không tạo commit mới
+
+5, Git clone: sao chép tất cả remote repo về máy local
+   Git fetch: cập nhật nội dung trên remote repo về máy local
+
+6, Git fetch: cập nhật nội dung trên remote repo về máy local
+   Git pull: vừa cập nhật nội dung từ remote vừa cập nhật local repo tương ứng  
+   Git pull= git fetch + git merge
+
+7, Git pull= Git fetch + git merge 
+   Git pull --rebase= Git fetch + git rebase
+ Khác: git pull tạo 1 commit merge mới 
+       git pull --rebase: không có commit mới
+
+8, Git log: Xem lại lịch sử commit
+
+9, Git status: Xem trạng thái file
+
+10, Git add: Cập nhật file
+
+11, Git commit: Lưu thông tin khi thực hiện với Git
+
+12, Git branch ten-nhanh-moi
+
+13, Git branch -d tennhanh
+
+14, Git branch -D tennhanh
+
+15, Nhánh trung gian : Khi clone một remote repo về local sẽ tạo nhánh trung gian (origin) đại điện cho repo đó tại local
+
+16, Detach HEAD xảy ra khi checkout commit thay vì branch chứa commit đó
+
+17, HEAD: vị trí con trỏ đang chỉ về ( có thể 1 nhánh, 1 conmmit)
+    Branch: Nhánh
+
+18, Các lệnh xóa commit: 
+git reset --hard HEAD~1: xóa commit, xóa luôn nội dung
+git reset --soft HEAD~1: xóa commit, giữ nội dung
+
+19, Các trạng thái của file trong git:
+Untracked: Các file chưa add, chưa commit
+Stage: Các file đã được thêm thành công, chuẩn bị commit
+Modifiled: File đã được sưả đổi từ file đã được commit
+Unmodifiled:File đã được commit thành công
+
+20, Sao chép remote về máy local > Cập nhật nội dung trên remote > Tạo nhánh tương ứng task mình làm từ branch remote tương ứng > Thực hiện dự án > Sau khi hoàn thành push lên remote
+VD: Git clone [remote repo] > git fetch > git checkout -b task [ten_nhanh_remote] > Code > git push origin task:[ten_nhanh_remote]
+ 
