@@ -1,0 +1,54 @@
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+	-> git init
+	touch c1.txt
+	git add c1.txt
+	git commit -m "tao file c1.txt"
+	touch c2.txt
+	git add c2.txt
+	git commit -m "tao file c2.txt"	
+	touch c3.txt
+	git add c3.txt
+	git commit -m "tao file c3.txt"
+	git branch feature master
+	git checkout feature
+	touch c4.txt
+	git add c4.txt
+	git commit -m "tao file c4.txt"
+	touch c5.txt
+	git add c5.txt
+	git commit -m "tao file c5.txt"
+	git branch bug master
+	git checkout bug
+	touch c6.txt
+	git add c6.txt
+	git commit -m "tao file c6.txt"
+	touch c7.txt
+	git add c7.txt
+	git commit -m "tao file c7.txt"	
+	touch c8.txt
+	git add c8.txt
+	git commit -m "tao file c8.txt"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+	-> git checkout feature
+	git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+	-> git checkout feature
+	git rebase bug
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+	-> giống nhau : 
+	 	- Dều dùng để gộp 2 branch  lại với  nhau
+		- Đêu cho ra 1 commit chứa đầy đủ code của 2 banch
+		- giống nhau khi thực hiện rebase/merge 2 branh trên cùng 1 đường thẳng
+	-> Khác nhau : thực hiện trên 2 branch không chung 1 đường thẳng
+  		- merge :
+		 + kết quả  sau khi thực hiện merge 2 branch là tạo thêm 1 commit mang tên Merge branch thì như v sẽ  làm xấu lịch  sử  commit
+		 + khi push lên repo thì cách commit sẽ sắp  xếp theo thời gian nên không thuận tiện cho việc kiểm tra việc push commit đó thành công hay không
+		- rebase :
+		 + kết quả  sau khi thực hiện rebase 2 branch lấy các commit của  branch được reabse sẽ so sánh  với commit chung gần nhất và lấy những commit khác đó sẽ được  replay lên branch kia  nên là số commit sẽ không thay đổi sau khi gộp nhánh 
+		 + vì cacsc commit đã được replay lại nên khi push lên repo thì các commit sẽ sắp  xếp ở đầu tiên và dễ dàng thấy 
+	
+	
+	
