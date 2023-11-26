@@ -1,1 +1,1 @@
-project: todo-app-1.0
+update-version-todo-app-3.0-snapshot
