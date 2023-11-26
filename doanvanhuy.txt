@@ -1,0 +1,127 @@
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "commit 1"
+
+touch c2.txt
+git add c2.txt
+git commit -m "commit 2"
+
+touch c3.txt
+git add c3.txt
+git commit -m "commit 3"
+
+git checkout -b feature master
+touch c4.txt
+git add c4.txt
+git commit -m "commit 4"
+
+touch c5.txt
+git add c5.txt
+git commit -m "commit 5"
+
+git checkout -b bug master
+touch c6.txt
+git add c6.txt
+git commit -m "commit 6"
+
+touch c7.txt
+git add c7.txt
+git commit -m "commit 7"
+
+touch c8.txt
+git add c8.txt
+git commit -m "commit 9"
+
+2.Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+git checkout feature
+git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+git checkout bug
+git merge feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+Giống: đều gộp nhánh
+Khác: 
+ + Merge: xấu lịch sử, tăng số lượng commit
+ + Rebase: không hiện lịch sử mình đã gộp nhánh, số lượng commit giữ nguyên, thay đổi mã hash
+Rebase: Khả năng là phải fix conflicts nhiều lần
+       Không hiện lịch sử để mình biết được đã gộp 2 nhánh vào rồi
+Merge: Khả năng là phải fix conflicts 1 lần
+       Hiện lịch sử để mình biết được đã gộp 2 nhánh vào rồi
+5. Phân biệt git fetch và git clone
+git fetch: đồng bộ tất cả nội dung mới nhất ở trên remote repo về local repo với điều kiện đã liên kết local repo với remote repo
+git clone: lấy toàn bộ tất cả nội dung trên remote repo về local mà không cần liên kết remote repo với local repo
+
+6. Phân biệt git fetch và git pull
+git fetch: chỉ đồng bộ tất cả dữ liệu trên remote repo với local repo
+git pull: đồng bộ tất cả dữ liệu trên remote repo với local repo và tự động merge những commit mới nhất vào nhánh cần thiết
+
+7. Phân biệt git pull và git pull --rebase
+-git pull: fetch + merge
+ +tăng số lượng commit và hiện thị lịch sử merge ... into ...
+-git pull --rebase: fetch + rebase
+ +Không tăng số lượng commit và Không hiện lịch sử để mình biết được đã gộp 2 nhánh vào rồi
+  	
+8. Git log dùng để làm gì
+Dùng để show các lịch sử commit, author, time 
+
+9. Git status dùng để làm gì
+Xem trạng thái các file
+
+10. Git add dùng để làm gì
+Dùng để thêm các file vào trạng thái stage
+
+11. Git commit dùng để làm gì
+Dùng để lưu lại các thay đổi trong thư mục khi làm việc với Git.
+
+12. Mô tả lệnh để tạo branch ở local
+git branch ten_nhanh_moi ten_nhanh_cu
+
+13. Mô tả lệnh để xóa branch ở local
+git branch -D ten_nhanh_can_xoa
+-D xóa hết ko cần quan tâm
+
+14. Mô tả lệnh để xóa branch ở remote
+git branch -d ten_nhanh_can_xoa
+-d sẽ xóa local branch nếu bạn đã push và merge nó lên branch remote.
+
+15. Nhánh trung gian là gì
+Nhánh trung gian là nhánh để mình tạo nhánh mới từ chỗ nhánh trung gian rồi làm các chức năng
+
+16. Detach HEAD là gì
+Không khuyến khích vì khi đang ở detached head, nếu tạo commit mới thì HEAD nhảy lên nhưng quan trọng là commit đó ko được quản lý trong bất kỳ branch nào
+Nếu như mình gõ git log thậm chí với tham số -all nó cũng ko show ra 
+17. Phân biệt HEAD và BRANCH
+HEAD: 
+	-là 1 con trỏ đặc biệt có thể trỏ đến nhánh hoặc commit
+	-khi HEAD trỏ đến commit nào, thư mục làm việc sẽ hiện thị 	nội dung , tài liệu ở commit đó
+	-có thể di chuyển đến bất kỳ commit, branch nào trỏ đến 	branch --> bình thường
+	HEAD trỏ đến commit --> trạng thái DETACHED HEAD (giải thích 	ở câu 16)
+BRANCH: đơn thuần là con trỏ, trỏ đến commit và có khả năng di chuyển được.
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+- Có 2 cách xóa commit
+  +cách 1:
+	Xóa commit hiện tại đồng thời giữ nguyên nội những tập tin 	đã thay đổi,đưa các tập tin vào trạng thái staged, tiếp tục 	thực hiện và commit	
+	git reset –soft
+  +cách 2: 
+	Xóa commit hiện tại, đồng thời loại bỏ những thứ đã thay đổi
+	git reset –hard	
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+untrack: khi mới tạo file mà file đó chưa commit lần nào
+modifier: khi đã commit mà cần thay đổi nội dung trong file
+unmodifier: khi đã commit mà nội dung trong file không được sửa đổi
+stage: khi mới add file ở trạng thái untrack hoặc modifier
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+1. Xem task đó thuộc branch todo-app-2.0
+2. Xem task đó thuộc version 2.0
+3. git clone https://github.com/j4tdn/java22-todo-app-exam
+4. git fetch
+6. git checkout -b task10-createSymmetricfile origin/todo-app-2.0
+7. touch symmetric.txt
+8. git add symmetric.txt
+9. git commit -m "add symmetric function"
+10. git push origin HEAD:todo-app-2.0
