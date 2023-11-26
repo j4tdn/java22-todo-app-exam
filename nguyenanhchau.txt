@@ -1,0 +1,140 @@
+1. Viết chương trình/lệnh mô tả các bước thực hiện sơ đồ git tree sau đây ở local repository
+ -> git init
+    touch c1.txt 
+    git add c1.txt
+    git commit -m "Commit 1"
+    touch c2.txt
+    git add c2.txt
+    git commit -m "Commit 2"
+    touch c3.txt
+    git add c3.txt
+    git commit -m "Commit 3"
+    git branch feature master
+    git checkout feature
+    touch c4.txt
+    git add c4.txt
+    git commit -m "Commit 4"
+    touch c5.txt
+    git add c5.txt
+    git commit -m "Commit 5"
+    git branch bug master
+    git checkout bug
+    touch c6.txt
+    git add c6.txt
+    git commit -m "Commit 6"
+    touch c7.txt
+    git add c7.txt
+    git commit -m "Commit 7"
+    touch c8.txt
+    git add c8.txt
+    git commit -m "Commit 8"
+
+2. Viết lệnh thực hiện gộp nhánh bug vào nhánh feature sử dụng git merge
+ -> git checkout feature
+    git merge bug
+
+3. Viết lệnh thực hiện gộp nhánh feature vào bug sử dụng git rebase
+ -> git checkout bug
+    git rebase feature
+
+4. Phân biệt git merge và git rebase(giống, khác nhau, khi nào nên sử dụng)
+ -> Giống nhau 
+    Th1 : Gộp trên cùng 1 nhánh
+          +Gộp con vào cha : Fast Forward
+          +Gộp cha vào con : Nothing to merge/rebase
+ -> Khác nhau
+    Th2 : Gộp rẽ nhánh 
+          +Merge: Sẽ tạo ra commit mới được gọi là commit merge
+          +Rebase: Ko tạo ra commit mới, nhánh có HEAD trỏ đến sẽ được nối vào đuôi của commit mới nhất của nhánh còn lại,
+                   đồng thời các commit đó sẽ bị thay đổi mã hash và bị xoá đi từ vị trí cha chung gần nhất
+ -> Nên dùng rebase hơn bởi vì sẽ tránh tạo ra commit merge, tăng tính thẩm mĩ và dễ theo dõi quá trình thực hiện dự án 
+
+
+5. Phân biệt git fetch và git clone
+ -> Git fetch: Lấy code mới nhất của remote repo về nhưng với điều kiện đã liên kết với remote repo
+    Git clone: Lấy code mới nhất của remote repo về và tự động kết nối với remote repo
+
+ 
+6. Phân biệt git fetch và git pull
+ -> Giống nhau: lấy code mới nhất từ remote repo về
+ -> Khác nhau: 
+      + git fetch: lấy code về nhưng ko merge/rebase
+      + git pull: lấy code về và merge/rebase(Tuỳ thuộc vào cài đặt config của git)
+
+
+7. Phân biệt git pull và git pull --rebase
+ -> + Git pull : fetch và merge/rebase(Tuỳ thuộc vào cài đặt của config của git)
+    + Git pull --rebase : fetch và rebase(ngay cả khi trong cài đặt của git là fetch + merge)
+
+
+8. Git log dùng để làm gì
+ -> Show lịch sử commit
+
+9. Git status dùng để làm gì
+ -> Xem tình trạng các file (Untracked, Modified, Staged)
+
+10. Git add dùng để làm gì
+ -> Add một file vào trạng thái Staged để chuẩn bị commit
+
+11. Git commit dùng để làm gì
+ -> Chuyển một file sang trạng thái Unmodified
+
+12. Mô tả lệnh để tạo branch ở local
+ -> Git branch A B (Tạo nhánh có tên A từ nhánh B)
+    Git branch A 123456 (Tạo nhánh có tên A từ commit có mã hash là 123456)
+
+13. Mô tả lệnh để xóa branch ở local
+ -> Git branch -d A (Xoá nhánh A khi nhánh A được quản lý bởi các nhánh con)
+    Git branch -D A (Xoá nhánh A khi nhánh A ở commit mới nhất)
+
+14. Mô tả lệnh để xóa branch ở remote
+ -> git push origin ten_nhanh_can_xoa -d
+
+15. Nhánh trung gian là gì
+ -> Nhánh trung gian là nhánh mà khi fetch về chứa toàn bộ nội dung commit ở trên remote repo và sẽ được bắt đầu bằng chữ origin
+
+16. Detach HEAD là gì
+ -> Trường hợp HEAD trỏ đến một commit
+
+17. Phân biệt HEAD và BRANCH
+ -> HEAD: là điều kiện quan trọng phải có để nhánh có thể di chuyển khi commit mới được làm
+    BRANCH: là nhánh, dùng để quản lý các commit, phải có HEAD trỏ đến thì nhánh mới có thể di chuyển
+
+18. Có mấy cách để xóa commit, mô tả và cho ví dụ
+ -> Có 2 cách:
+     + git reset --hard HEAD~1 : Xoá commit và nội dung của commit đó 
+       Ví dụ : A -> B -> C(HEAD->master)
+               git reset --hard HEAD~1
+               A -> B(HEAD->master)
+		
+     + git reset --soft HEAD~1 : Xoá commit và giữ lại nội dung
+       Ví dụ : A -> B -> C(HEAD->master)
+               git reset --soft HEAD~1
+               A -> B(HEAD->master)
+               Nếu muốn commit C quay trở về thì sử dụng: git cherry-pick ma_hash_commitC
+ 		
+
+19. Liệt kê các trạng thái của file trong git, giải thích từng trạng thái
+ ->  Trạng thái Untracked: File mới tạo và chưa được quản lý bởi git
+     
+     Trạng thái Unmodified: File đã được commit thành công
+
+     Trạng thái Modified: Thao tác chỉnh sửa trên file, phải add và commit lại
+
+     Trạng thái Staged: File đã được add và có thể commit 
+
+20. Mô tả các bước cần thực hiện khi nhận 1 task từ dự án, cho ví dụ
+    B1: Xem task đó là của version nào từ đó xác định rõ nhánh để thực hiện task đó
+    B2: Lấy code mới nhất về (fetch/clone)
+    B3: Tạo nhánh mới từ nhánh trung gian của version đó
+    B4: Đưa HEAD về nhánh đó
+    B5: Thực hiện code -> add -> commit
+    B6: Push code lên remote repo
+  Ví dụ : Thực hiện task sum của dự án TINHTOAN
+    B1: Task sum của version TINHTOAN-1.0 -> Làm từ nhánh TINHTOAN-1.0
+    B2: Git fetch / Git clone
+    B3: Git branch task-sum origin/TINHTOAN-1.0
+    B4: Git checkout task-sum
+    B5: Thực hiện code, add, commit file code
+    B6: Git push origin task-sum:TINHTOAN-1.0
+
