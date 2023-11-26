@@ -1,1 +1,1 @@
-project: todo-app-1.0
+project: todo-app-4.0-snapshot
