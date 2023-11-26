@@ -1,0 +1,104 @@
+câu 1:
+git init
+touch c1.txt
+git add c1.txt
+git commit -m "Commit 1"
+touch c2.txt
+git add c2.txt
+git commit -m "Commit 2"
+touch c3.txt
+git add c3.txt
+git commit -m "Commit 3"
+git branch feature
+git checkout feature
+touch c4.txt
+git add c4.txt
+git commit -m "Commit 4"
+touch c5.txt
+git add c5.txt
+git commit -m "Commit 5"
+git checkout master
+git branch bug
+git checkout bug
+touch c6.txt
+git add c6.txt
+git commit -m "Commit 6"
+touch c7.txt
+git add c7.txt
+git commit -m "Commit 7"
+touch c8.txt
+git add c8.txt
+git commit -m "Commit 8"
+câu 2:
+git checkout feature
+git merge bug
+câu 3:
+đưa HEAD về feature: git checkout feature
+sau đó rebase nhánh feature lên nhánh bug: git rebase bug
+câu 4: phân biệt rebase và merge
+- giống nhau: cả 2 đều được sử dụng để gộp nhánh 
+- khác nhau: 
+ + merge: gộp nội dung ở 2 commits mới nhất từ 2 nhánh và cơ sở là xem commit cha gần nhất của 2 nhánh đó để gộp
+	  chỉ fix được 1 lần duy nhất nếu bị conflict
+	  khi merge thì luôn tạo ra commit mới
+ + rebase: có thể bị conflict nhiều lần
+	   không tạo ra commit mới
+- khi nào nên sử dụng: 
+ + khi gộp 2 nhánh của remote project chứa nhiều commit nên dùng merge
+ + làm xong commit, khi push code lên remote thì bị reject nên dùng rebase
+câu 5:
+git fetch: lấy tất cả thông tin dữ liệu từ remote repo mà không làm working directory bị thay đổi. thường được sử dụng khi muốn cập nhật thông tin từ remote branch mà không muốn làm thay đổi local working directory
+git clone: sao chép toàn bộ remote repo để mình có thể làm việc trên đó và thay đổi toàn bộ working directory
+câu 6:
+git fetch: lấy thông tin từ remote repo mà không thay đổi working directory hoặc bất cứ thông tin gì trên đấy
+git pull: có nghĩa vừa thực hiện fetch và merge tức là lấy thông tin từ remote repo và tự động thực hiện merge vào nhánh hiện tại
+câu 7:
+git pull: thực hiện fetch và merge
+	  tự động thực hiện merge vào nhánh hiện tại
+	  tạo commit merge mới
+git pull --rebase: thực hiện fetch và rebase
+	  thực hiện rebase thay vì merge
+	  không tạo commit mới
+câu 8: git log dùng để xem lịch sử commit của repo
+câu 9: git status để hiện trạng thái hiện tại của file ở trong working directory
+câu 10: git add dùng để thêm các thay đổi từ working directory vào trạng thái stage
+câu 11: git commit để tạo ra commit mới với các thay đổi ta đã làm trong dự án đó 
+câu 12: để tạo nhánh mới ở local ta sử dụng lện git branch <tên nhánh mới>
+ví dụ ta muốn tạo nhánh mới đặt tên là feature: git branch feature
+câu 13: để xóa 1 nhánh ở local ta sử dụng lệnh git branch -d <tên nhánh ta muốn xóa>
+ví dụ ta muốn xóa nhánh ta đã tạo ở câu 12 là feature: git branch -d feature
+câu 14: xóa nhánh remote branch: git branch push origin --delete <tên nhánh remote ta cần xóa>
+câu 15: nhánh trung gian là nhánh ảo được tạo ra bởi git khi ta tạo ra nhánh ở trên remote repo. nhánh trung gian giúp ta dễ dàng quản lý quy trình làm việc một cách dễ dàng tránh bị xung đột giữa các nhánh khi làm việc remote... -))) em cũng chưa hiểu sâu lắm
+câu 16: DETACH HEAD là trạng thái khi mà con trỏ HEAD không trỏ đến một nhánh cụ thể mà trỏ trực tiếp vào commit 
+câu 17: HEAD chỉ vị trí hiện tại của con trỏ tức là chỉ vị trí làm việc hiện tại của ta trong một nùi commit và có thể trỏ đến nhánh hoặc commit nào đó 
+	BRANCH là nhánh trên một nhánh cụ thể nào đó của một nùi commit mà ta tạo ra dùng để đại diện cho 1 chức năng hay version nào của dự án
+câu 18: xóa commit:
+1. git reset --hard HEAD~1 tức là xóa commit xóa luôn nội dung commit đó
+ví dụ trên 1 nhánh làm việc có 4 commit HEAD đang ở commit số 4 mà ta muốn xóa toàn bộ nội dungg của commit 3 thì:
+git reset --hard HEAD~1
+2. git reset --soft HEAD~1: xóa commit giữ lại nội dung
+ví dụ trên 1 nhánh làm việc có 4 commit HEAD đang ở commit số 4 mà ta chỉ muốn xóa commit 3 nhưng vẫn giữ lại nội dung thì:
+git reset --soft HEAD~1
+câu 19: có 4 trạng thái file trong git
+Untracked: file này ta chỉ mới tạo trong thư mục làm việc nhưng chưa add để git quản lý
+Unmodified: file đã được add vào git quản lý và không có sự thay đổi so với version cuối cùng
+Modified: file đã được add vào git quản lý nhưng đã được chỉnh sữa từ commit cuối cùng
+staged: file đã được add vào git quản lý và đã được đóng gói cho việc commit
+câu 20: khi nhận được task từ dự án: 
+đầu tiên ta fetch tất cả file dữ liệu từ remote repo
+sau đó bật git bash lên làm việc: 
+	tạo nhánh làm việc của task ta được giao trên version của task đó
+	sau khi tạo ta đưa con trỏ HEAD về branch task mà ta đã tạo
+	sau khi code xong ta sử dụng lệnh git add những file mà ta sữa đổi làm việc
+	và commit task đó 
+	sau đó push lên remote repo
+ví dụ: ta có 1 dự án làm version 1 task là fix bug file sum.txt 
+đầu tiên ta bật git bash here ở thư mục làm việc 
+nếu chưa có thư mục làm việc ta có thể dùng lệnh git clone để lấy toàn bộ dư liệu từ remote repo
+sau đó đưa HEAD sang version 1 : git checkout version 1
+ở trong version 1: ta tạo 1 branch task với công việc mà ta được giao: git branch task-fix-bug-sum origin/version1
+sau đó đưa HEAD về branch task: git checkout task-fix-bug-sum
+fix bug xong file sum.txt 
+ta git add sum.txt
+git commit -m "fix bug sum"
+sau đó push lên remote: git push task-fix-bug-sum origin: version1
